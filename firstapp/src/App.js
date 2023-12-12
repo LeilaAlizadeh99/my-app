@@ -4,6 +4,8 @@ import { useState } from 'react'
 
 function App() {
 
+const [showEvents, setShowEvents] = useState(true)
+
 const [events, setEvents] = useState([
   {title: "THOR: LOVE AND THUNDER (2022)" , id: 1},
   {title: "THE GRAY MAN (2022)" , id: 2},
@@ -13,16 +15,38 @@ const [events, setEvents] = useState([
   {title: "HUSTLE (2022)" , id: 6}
 ])
 
-const handlClick = () => {
-
+const handlClick = (id) => {
+  setEvents((prevEvents) => {
+    return prevEvents.filter((event) => {
+      return id !== event.id
+    })
+  })
 }
 
   return (
     <div className="App">
+
+      {
+        showEvents && (
+        <div>
+          <button onClick={() => setShowEvents(false)}>Hide</button>
+        </div>
+        )
+      }
+
+{
+        !showEvents && (
+        <div>
+          <button onClick={() => setShowEvents(true)}>Show</button>
+        </div>
+        )
+      }
+
      {
-      events.map((event, index ) => (
+      showEvents && events.map((event, index ) => (
         <div key={event.id}>
           <h2>{index + 1} - {event.title}</h2>
+          <button onClick={() => handlClick(event.id)}>Delete</button>
         </div>
       ))
      }
