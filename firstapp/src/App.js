@@ -1,23 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react'
 
 function App() {
+
+const [events, setEvents] = useState([
+  {title: "THOR: LOVE AND THUNDER (2022)" , id: 1},
+  {title: "THE GRAY MAN (2022)" , id: 2},
+  {title: "THE SEA BEAST (2022)" , id: 3},
+  {title: "TOP GUN: MAVERICK (2022)" , id: 4},
+  {title: "DOCTOR STRANGE (2022)" , id: 5},
+  {title: "HUSTLE (2022)" , id: 6}
+])
+
+const handlClick = () => {
+
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React with Leila
-        </a>
-      </header>
+     {
+      events.map((event, index ) => (
+        <div key={event.id}>
+          <h2>{index + 1} - {event.title}</h2>
+        </div>
+      ))
+     }
     </div>
   );
 }
