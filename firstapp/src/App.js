@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react'
+import { useState } from 'react';
+import Title from './components/Title';
 
 function App() {
 
@@ -25,6 +26,7 @@ const handlClick = (id) => {
 
   return (
     <div className="App">
+      <Title />
 
       {
         showEvents && (
@@ -34,7 +36,7 @@ const handlClick = (id) => {
         )
       }
 
-{
+      {
         !showEvents && (
         <div>
           <button onClick={() => setShowEvents(true)}>Show</button>
